@@ -1,0 +1,36 @@
+[
+  {
+      "name": "DuckSploit",
+      "description": "Create your reverse shell in few steps and gain access to the target computer",
+      "image": "",
+      "version": "1.1.4",
+      "first-date": "02-15-2022",
+      "last-update": "01-23-2024",
+      "updates": [],
+      "author": "4re5 group - 0x262d",
+      "license": "Attribution-NonCommercial 4.0 International",
+      "package": "com.4re5.ducksploit",
+      "platform": ["Windows", "Android", "Linux"],
+      "url": "https://github.com/canarddu38/DUCKSPLOIT/raw/refs/heads/root/hacker/windows/versions/DSinstaller-1.1.4.exe",
+      "keywords": ["Hacking", "Administration tool", "Malware", "RAT"],
+      "install_requires": ["Windows+Dotnet"]
+  },
+  {
+    "disabled": "true",
+    "name": "template",
+    "description": "",
+    "image": "",
+    "version": "",
+    "first-date": "",
+    "last-update": "",
+    "updates": [],
+    "author": "4re5 group",
+    "license": "",
+    "package": "com.4re5.",
+    "platform": [],
+    "url": "",
+    "keywords": [],
+    "install_requires": ["Windows+Dotnet"]
+}
+  
+]
