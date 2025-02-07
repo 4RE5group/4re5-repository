@@ -14,7 +14,8 @@
       "url": "https://github.com/canarddu38/DUCKSPLOIT/raw/refs/heads/root/hacker/windows/versions/DSinstaller-1.1.4.exe",
       "keywords": ["Hacking", "Administration tool", "Malware", "RAT"],
       "install_requires": ["Windows+Dotnet"],
-      "isCmdTool": "false"
+      "isCmdTool": "false",
+      "startUpFile": "ds.exe"
   },
   {
     "disabled": "false",
@@ -32,7 +33,8 @@
     "url": "https://github.com/4RE5group/imgTI/releases/download/v1.0/imgTI.exe",
     "keywords": ["TI-83", "Tool"],
     "install_requires": ["Windows+Dotnet", "Windows+TI-CONNECT-CE"],
-    "isCmdTool": "true"
+    "isCmdTool": "true",
+    "startUpFile": "imgTI.exe"
   },
   {
     "disabled": "true",
@@ -50,7 +52,6 @@
     "url": "",
     "keywords": [],
     "install_requires": ["Windows+Dotnet"],
-    "isCmdTool": "false"
-}
-  
-]
+    "isCmdTool": "false",
+    "startUpFile": ""
+}]
