@@ -5,7 +5,7 @@
       "image": "https://raw.githubusercontent.com/canarddu38/DUCKSPLOIT/refs/heads/root/images/icon-nobg.png",
       "version": "1.1.4",
       "first_date": "02-15-2022",
-      "last_update": "01-23-2024",
+      "last_update": "1.1.4",
       "updates": [],
       "author": "4re5 group - 0x262d",
       "license": "Attribution-NonCommercial 4.0 International",
@@ -14,6 +14,23 @@
       "url": "https://github.com/canarddu38/DUCKSPLOIT/raw/refs/heads/root/hacker/windows/versions/DSinstaller-1.1.4.exe",
       "keywords": ["Hacking", "Administration tool", "Malware", "RAT"],
       "install_requires": ["Windows+Dotnet"]
+  },
+  {
+    "disabled": "false",
+    "name": "imgTI",
+    "description": "TI-83 premium CE image to graph pixel art converter",
+    "image": "",
+    "version": "1.0",
+    "first_date": "10-05-2024",
+    "last_update": "1.0",
+    "updates": [],
+    "author": "4re5 group - 0x262d",
+    "license": "GNU GPL",
+    "package": "com.4re5.imgTI",
+    "platform": ["Windows"],
+    "url": "https://github.com/4RE5group/imgTI/releases/download/v1.0/imgTI.exe",
+    "keywords": ["TI-83", "Tool"],
+    "install_requires": ["Windows+Dotnet", "Windows+TI-CONNECT-CE"]
   },
   {
     "disabled": "true",
