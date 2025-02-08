@@ -15,7 +15,9 @@
       "keywords": ["Hacking", "Administration tool", "Malware", "RAT"],
       "install_requires": ["Windows+Dotnet"],
       "isCmdTool": "false",
-      "startUpFile": "ds.exe"
+      "startUpFile": "%userprofile%/DuckSploit/ds.exe",
+      "isZipped": "true",
+      "installer": "DSinstaller-1.1.4.exe"
   },
   {
     "disabled": "false",
@@ -34,7 +36,9 @@
     "keywords": ["TI-83", "Tool"],
     "install_requires": ["Windows+Dotnet", "Windows+TI-CONNECT-CE"],
     "isCmdTool": "true",
-    "startUpFile": "imgTI.exe"
+    "startUpFile": "imgTI.exe",
+    "isZipped": "true",
+    "installer": ""
   },
   {
     "disabled": "true",
@@ -53,5 +57,7 @@
     "keywords": [],
     "install_requires": ["Windows+Dotnet"],
     "isCmdTool": "false",
-    "startUpFile": ""
+    "startUpFile": "",
+    "isZipped": "false",
+    "installer": ""
 }]
