@@ -14,8 +14,8 @@
       "url": "https://github.com/canarddu38/DUCKSPLOIT/raw/refs/heads/root/hacker/windows/versions/DSinstaller-1.1.4.exe",
       "keywords": ["Hacking", "Administration tool", "Malware", "RAT"],
       "install_requires": ["Windows+Dotnet"],
-      "isCmdTool": "false",
-      "startUpFile": "%userprofile%/DuckSploit/ds.exe",
+      "isCmdTool": "true",
+      "startUpFile": "ds.bat",
       "isZipped": "true",
       "isInstaller": "true"
   },
