@@ -10,6 +10,7 @@
       "platform": {
         {
           "name": "Windows",
+          "platformid": 0,
           "url": "https://github.com/canarddu38/DUCKSPLOIT/raw/refs/heads/root/hacker/windows/versions/DSinstaller-1.1.4.exe",
           "version": "1.1.4",
           "install_requires": ["Dotnet"],
@@ -20,6 +21,7 @@
         },
         {
           "name": "Android",
+          "platformid": 1,
           "url": "https://github.com/canarddu38/DUCKSPLOIT/blob/root/hacker/android/versions/DSinstaller-V1.3.3.apk?raw=true",
           "version": "1.3.3",
           "install_requires": [],
@@ -30,6 +32,7 @@
         },
         {
           "name": "Linux",
+          "platformid": 2,
           "url": "https://raw.githubusercontent.com/canarddu38/DUCKSPLOIT/root/hacker/linux/DSinstaller.deb?raw=true",
           "version": "1.0.9",
           "install_requires": [],
@@ -53,6 +56,7 @@
     "platform": {
         {
           "name": "Windows",
+          "platformid": 0,
           "url": "https://github.com/4RE5group/imgTI/releases/download/v1.0/imgTI.exe",
           "version": "1.0",
           "install_requires": ["TI-CONNECT-CE"],
