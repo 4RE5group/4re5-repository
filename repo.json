@@ -26,7 +26,7 @@
           "version": "1.3.3",
           "install_requires": [],
           "isCmdTool": "false",
-          "startUpFile": "",
+          "startUpFile": "none",
           "isZipped": "false",
           "isInstaller": "false"
         },
