@@ -1,1 +1,49 @@
-
+[
+    {
+        "name": "4re5 test mod",
+        "description": "Sample test for 4re5 Mods",
+        "image": "https://github.com/4RE5group/4re5group.github.io/blob/main/assets/4R%20E5(1).png?raw=true",
+        "options": [
+            {
+                "text": "MyLabel1",
+                "offset": "0x00000000",
+                "editType": "label",
+                "min": "0",
+                "max": "0",
+                "type": "string"
+            },
+            {
+                "text": "Option1",
+                "offset": "0x00000000",
+                "editType": "range",
+                "min": "0",
+                "max": "10",
+                "type": "int"
+            },
+            {
+                "text": "Option2p",
+                "offset": "0x40000090",
+                "editType": "input",
+                "min": "0",
+                "max": "0",
+                "type": "double"
+            },
+            {
+                "text": "MyLabel2",
+                "offset": "0x00000000",
+                "editType": "label",
+                "min": "0",
+                "max": "0",
+                "type": "string"
+            },
+            {
+                "text": "Option5",
+                "offset": "0x00000000",
+                "editType": "switch",
+                "min": "0",
+                "max": "10",
+                "type": "int"
+            }
+        ]
+    }
+]
