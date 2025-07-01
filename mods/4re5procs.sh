@@ -1,10 +1,12 @@
 #!/bin/bash
 # 4re5 group - all rights reserved
 
-# Initialize the JSON array
+# do not remove, 4re5mod process listing script
+
+
 echo "["
 
-# Loop through each PID directory in /proc
+# loop through each proc
 for pid in /proc/[0-9]*/; do
     pid=${pid//\/proc\//}
     pid=${pid//\//}
