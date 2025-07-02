@@ -16,7 +16,7 @@ for pid in /proc/[0-9]*/; do
 
     # If the process name is not empty, add it to the JSON array
     if [ -n "$name" ]; then
-        echo "{"\"name\": \"$name\",\"pid\": \"$pid\"},"
+        echo "{\"name\": \"$name\",\"pid\": \"$pid\"},"
     fi
 done | sed '$ s/,$//' # Remove the trailing comma from the last entry
 
