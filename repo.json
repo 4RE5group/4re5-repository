@@ -4,7 +4,7 @@
       "description": "Create your reverse shell in few steps and gain access to the target computer",
       "image": "https://raw.githubusercontent.com/canarddu38/DUCKSPLOIT/refs/heads/root/images/icon-nobg.png",
       "first_date": "02-15-2022",
-      "author": "4re5 group - 0x262d",
+      "author": "4re5 group",
       "license": "Attribution-NonCommercial 4.0 International",
       "package": "com.ares.ducksploit",
       "platform": [
@@ -50,7 +50,7 @@
     "description": "TI-83 premium CE image to graph pixel art converter",
     "image": "",
     "first_date": "10-05-2024",
-    "author": "4re5 group - 0x262d",
+    "author": "4re5 group",
     "license": "GNU GPL",
     "package": "com.ares.imgTI",
     "platform": [
@@ -69,6 +69,30 @@
     "keywords": ["TI-83", "Tool", "Calculator"]
   },
   {
+    "disabled": "false",
+    "name": "4re5-obfuscator",
+    "description": "Simple code obfuscator that create a copy of your source code to make it harder to detect by AntiViruses",
+    "image": "",
+    "first_date": "02-01-2025",
+    "author": "4re5 group",
+    "license": "GNU GPL 3.0",
+    "package": "com.ares.obfuscator",
+    "platform": [
+        {
+          "name": "Windows",
+          "platformid": 0,
+          "url": "https://github.com/4RE5group/4re5-obfuscator/releases/download/v1.0/4re5-obfuscator.exe",
+          "version": "1.0",
+          "install_requires": ["Dotnet"],
+          "isCmdTool": "true",
+          "startUpFile": "4re5-obfuscator.exe",
+          "isZipped": "false",
+          "isInstaller": "false"
+        }
+    ],
+    "keywords": ["Tool", "C#", "Obfuscator"]
+  },
+  {
     "disabled": "true",
     "name": "template",
     "description": "",
@@ -80,4 +104,5 @@
     "platform": [],
     "url": "",
     "keywords": []
-}]
+}
+]
