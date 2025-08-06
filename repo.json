@@ -5,6 +5,8 @@
       "image": "https://raw.githubusercontent.com/canarddu38/DUCKSPLOIT/refs/heads/root/images/icon-nobg.png",
       "first_date": "02-15-2022",
       "author": "4re5 group",
+      "price": "$0",
+      "github": "https://github.com/canarddu38/DuckSploit",
       "license": "Attribution-NonCommercial 4.0 International",
       "package": "com.ares.ducksploit",
       "platform": [
@@ -49,6 +51,8 @@
     "name": "imgTI",
     "description": "TI-83 premium CE image to graph pixel art converter",
     "image": "",
+    "price": "$0",
+    "github": "https://github.com/4RE5group/imgTI",
     "first_date": "10-05-2024",
     "author": "4re5 group",
     "license": "GNU GPL",
@@ -73,6 +77,8 @@
     "name": "4re5-obfuscator",
     "description": "Simple code obfuscator that create a copy of your source code to make it harder to detect by AntiViruses",
     "image": "",
+    "price": "$99",
+    "github": "https://github.com/4RE5group/4re5-obfuscator",
     "first_date": "02-01-2025",
     "author": "4re5 group",
     "license": "GNU GPL 3.0",
@@ -93,9 +99,37 @@
     "keywords": ["Tool", "C#", "Obfuscator"]
   },
   {
+    "disabled": "false",
+    "name": "Shadow Client",
+    "description": "Official 4re5 group antivirus for Linux based systems and Windows",
+    "github": "https://github.com/4RE5group/shadow_clientAV",
+    "image": "",
+    "price": "$0",
+    "first_date": "01-19-2025",
+    "author": "4re5 group",
+    "license": "MIT",
+    "package": "com.ares.shadowclient",
+    "platform": [
+        {
+          "name": "Linux",
+          "platformid": 2,
+          "url": "https://github.com/4RE5group/shadow_clientAV/releases/download/v1.0/shadow_client",
+          "version": "1.0",
+          "install_requires": ["Dotnet"],
+          "isCmdTool": "true",
+          "startUpFile": "4re5-obfuscator.exe",
+          "isZipped": "false",
+          "isInstaller": "false"
+        }
+    ],
+    "keywords": ["Tool", "C#", "Obfuscator"]
+  },
+  {
     "disabled": "true",
     "name": "template",
     "description": "",
+    "price": "$0",
+    "github": "https://github.com/4RE5group/...",
     "image": "",
     "first_date": "",
     "author": "4re5 group",
