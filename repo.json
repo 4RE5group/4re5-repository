@@ -170,7 +170,7 @@
     "price": "free",
     "github": "https://github.com/4RE5group/4re5-manager",
     "image": "https://github.com/4RE5group/4re5-manager/blob/main/assets/icon.png?raw=true",
-    "first_date": "",
+    "first_date": "2025-06-29",
     "author": "4re5 group",
     "license": "GNU GPL 3.0",
     "package": "com.ares",
@@ -178,8 +178,8 @@
       {
         "name": "Android",
         "platformid": 1,
-        "url": "https://github.com/4RE5group/4re5-manager/releases/download/v1.4-beta/release.apk",
-        "version": "1.4 beta",
+        "url": "https://github.com/4RE5group/4re5-manager/releases/download/v1.7-beta/release.apk",
+        "version": "1.7 beta",
         "install_requires": [
           ""
         ],
