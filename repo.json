@@ -192,7 +192,7 @@
     "keywords": []
   },
   {
-    "disabled": "true",
+    "disabled": "false",
     "name": "4re5net",
     "description": "A light remote device management panel to control IOT devices or servers all around the world remotly and apply security patches",
     "price": "$30",
