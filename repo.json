@@ -219,5 +219,36 @@
       }
     ],
     "keywords": []
+  },
+  {
+    "disabled": "true",
+    "name": "auto-handshake-capture",
+    "description": "Automated wifi handshake capture using airmon-ng tools",
+    "price": "free",
+    "github": "https://github.com/4RE5group/auto-handshake-capture",
+    "image": "",
+    "first_date": "2025-02-27",
+    "author": "4re5 group",
+    "license": "",
+    "package": "com.ares.autohandshakecapture",
+    "platform": [
+      {
+        "name": "Linux",
+        "platformid": 2,
+        "url": "https://raw.githubusercontent.com/4RE5group/auto-handshake-capture/refs/heads/main/capture.py",
+        "version": "1.0",
+        "install_requires": [
+          "python3",
+          "csv",
+          "subprocess",
+          "time"
+        ],
+        "isCmdTool": "true",
+        "startUpFile": "python3 capture.py",
+        "isZipped": "false",
+        "isInstaller": "false"
+      }
+    ],
+    "keywords": []
   }
 ]
