@@ -149,20 +149,7 @@
       "Obfuscator"
     ]
   },
-  {
-    "disabled": "true",
-    "name": "template",
-    "description": "",
-    "price": "free",
-    "github": "https://github.com/4RE5group/...",
-    "image": "",
-    "first_date": "",
-    "author": "4re5 group",
-    "license": "",
-    "package": "com.ares.",
-    "platform": [],
-    "keywords": []
-  },
+  
   {
     "disabled": "false",
     "name": "4re5 manager",
