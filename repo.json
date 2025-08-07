@@ -206,5 +206,19 @@
       }
     ],
     "keywords": []
-  }
+  },
+  {
+    "disabled": "true",
+    "name": "template",
+    "description": "",
+    "price": "free",
+    "github": "https://github.com/4RE5group/...",
+    "image": "",
+    "first_date": "",
+    "author": "4re5 group",
+    "license": "",
+    "package": "com.ares.",
+    "platform": [],
+    "keywords": []
+  },
 ]
