@@ -190,5 +190,34 @@
       }
     ],
     "keywords": []
+  },
+  {
+    "disabled": "true",
+    "name": "4re5net",
+    "description": "A light remote device management panel to control IOT devices or servers all around the world remotly and apply security patches",
+    "price": "$30",
+    "github": "https://github.com/4RE5group/4re5net",
+    "image": "https://github.com/user-attachments/assets/c04f89b7-4106-4cb7-ad0b-96f5f9840519",
+    "first_date": "2025-06-20",
+    "author": "4re5 group",
+    "license": "AGPL-3.0",
+    "package": "com.ares.net",
+    "platform": [
+      {
+        "name": "Linux",
+        "platformid": 2,
+        "url": "",
+        "version": "1.0",
+        "install_requires": [
+          "libjsoncpp",
+          "libcurl"
+        ],
+        "isCmdTool": "true",
+        "startUpFile": "./start.sh",
+        "isZipped": "false",
+        "isInstaller": "false"
+      }
+    ],
+    "keywords": []
   }
 ]
