@@ -221,7 +221,7 @@
     "keywords": []
   },
   {
-    "disabled": "true",
+    "disabled": "false",
     "name": "auto-handshake-capture",
     "description": "Automated wifi handshake capture using airmon-ng tools",
     "price": "free",
