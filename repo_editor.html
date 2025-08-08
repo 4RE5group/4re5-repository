@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4re5 repository json editor</title>
+    <style>
+        input {
+            color: white;
+            background-color: transparent;border-color: black;
+        }
+    </style>
+</head>
+<body style="height: 100vh; overflow: hidden; background-color: #323232; color: white; font-family: monospace;">
+    <script>
+        // init list of apps + current app
+        var map = new Map();
+        var current_app = 0;
+    </script>
+
+    <h1>4re5 repository json editor</h1>
+    <div style="align-items: center; justify-content: center; display: flex; flex-direction: column; position: absolute; right: 0px; top: 0px; width: 200px; height: 150px;">
+        <img style="width: 100px;" src="https://4re5group.github.io/public/external/pastedimage-tlvr-200h.png">
+        <p>4re5 group - 2025, all rights reserved</p>
+    </div>
+    <div>
+        <button onclick="getRepo()">Load current repo</button>
+        <button onclick="addNewApp()">Add new app</button>
+        <button onclick="copyToClipboard()">Copy json</button>
+    </div>
+    <div style="width: 100%; height: 80%; display: flex; margin-top: 20px;">
+        <!-- left -->
+        <div style="overflow-x: hidden; overflow-y: scroll; width: 50%; height: 100%; display: flex; flex-direction: column;">
+            <label>Disabled<input id="disabled" type="checkbox"></label>
+            
+            <label>Name</label>
+            <input id="name" type="text" placeholder="">
+            <label>Description</label>
+            <input id="description" type="text" placeholder="">
+            <img id="preview-image" style="width: 100px; height: 100px;" src="">
+            <label>Image</label>
+            <input id="image" type="text" placeholder="">
+            <label>Creation date</label>
+            <input id="first-date" type="date">
+
+            <label>Author</label>
+            <input id="author" type="text" placeholder="" value="4re5 group">
+            <label>Price (in $)</label>
+            <input id="price" type="number" value="0">
+            <label>Github url</label>
+            <input id="github" type="text" placeholder="" value="https://github.com/4re5group/">
+            <label>License</label>
+            <input id="license" type="text" placeholder="" value="GNU GPL 3.0">
+            
+            <label>Package</label>
+            <input id="package" type="text" placeholder="" value="com.ares.">
+
+            <!-- platform -->
+            <div id="win" style="padding: 10px; width: 100%; display: flex; flex-direction: column; margin-top: 10px; background-color: gray;">
+                <h1>Windows <input type="checkbox" id="windows" onclick="document.getElementById('win').style.background = document.getElementById('windows').checked?'transparent':'grey';"></h1>
+                <label>Download url</label>
+                <input id="win-download_url" type="text">
+                <label>Version</label>
+                <input id="win-version" type="text" value="1.0">
+                <label>Requirements</label>
+                <input id="win-requirements" type="text" value="">
+                <label>startup File</label>
+                <input id="win-startUpFile" type="text">
+                <label>is Cmd Tool</label>
+                <input id="win-isCmdTool" type="checkbox">
+                <label>is Zipped</label>
+                <input id="win-isZipped" type="checkbox">
+                <label>is Installer</label>
+                <input id="win-isInstaller" type="checkbox">
+            </div>
+
+            <div id="and" style="padding: 10px; width: 100%; display: flex; flex-direction: column; margin-top: 10px; background-color: gray;">
+                <h1>Android <input type="checkbox" id="android" onclick="document.getElementById('and').style.background = document.getElementById('android').checked?'transparent':'grey';"></h1>
+                <label>Download url</label>
+                <input id="and-download_url" type="text">
+                <label>Version</label>
+                <input id="and-version" type="text" value="1.0">
+                <label>Requirements</label>
+                <input id="and-requirements" type="text" value="">
+                <label>startup File</label>
+                <input id="and-startUpFile" type="text">
+                <label>is Cmd Tool</label>
+                <input id="and-isCmdTool" type="checkbox">
+                <label>is Zipped</label>
+                <input id="and-isZipped" type="checkbox">
+                <label>is Installer</label>
+                <input id="and-isInstaller" type="checkbox">
+            </div>
+
+            <div id="lin" style="padding: 10px; width: 100%; display: flex; flex-direction: column; margin-top: 10px; background-color: gray;">
+                <h1>Linux <input type="checkbox" id="linux" onclick="document.getElementById('lin').style.background = document.getElementById('linux').checked?'transparent':'grey';"></h1>
+                <label>Download url</label>
+                <input id="lin-download_url" type="text">
+                <label>Version</label>
+                <input id="lin-version" type="text" value="1.0">
+                <label>Requirements</label>
+                <input id="lin-requirements" type="text" value="">
+                <label>startup File</label>
+                <input id="lin-startUpFile" type="text">
+                <label>is Cmd Tool</label>
+                <input id="lin-isCmdTool" type="checkbox">
+                <label>is Zipped</label>
+                <input id="lin-isZipped" type="checkbox">
+                <label>is Installer</label>
+                <input id="lin-isInstaller" type="checkbox">
+            </div>
+
+            <button id="save" onclick="saveapp()">save</button>
+        </div>
+        <!-- right -->
+        <div style="margin-left: 20px; width: 50%; height: 100%; display: flex; flex-direction: column;">
+            <div style="width: 100%; height: auto; overflow-y: scroll;">
+                <p>json output:</p>
+                <p id="json-output">{}</p>
+            </div>
+            <div id="arbo" style="overflow-y: scroll; background-color: grey; width: 100%; height: 100%;">
+
+            </div>
+            
+        </div>
+    </div>
+    
+
+    <script>
+        function copyToClipboard() {
+            var copyText = document.getElementById("json-output");
+            // copyText.select();
+            // copyText.setSelectionRange(0, 99999); // For mobile devices
+            navigator.clipboard.writeText(copyText.innerText);
+            alert("Copied");
+        }
+
+        function addNewApp() {
+            if (!map)
+                alert("you need to fetch repo before editing it!");
+            map.push({
+                "disabled": "false",
+                "name": "template",
+                "description": "",
+                "price": "free",
+                "github": "https://github.com/4RE5group/...",
+                "image": "",
+                "first_date": "",
+                "author": "4re5 group",
+                "license": "",
+                "package": "com.ares.",
+                "platform": [],
+                "keywords": []
+            });
+            arbo.innerHTML += `<button onclick="loadapp(` + (map.length - 1) + `)">` + map[map.length - 1].name + `</button>`;
+        }
+        function saveapp() {
+            if (!map)
+                alert("you need to fetch repo before editing it!");
+            map[current_app].name = document.getElementById("name").value;
+            map[current_app].description = document.getElementById("description").value;
+            map[current_app].image = document.getElementById("image").value;
+            map[current_app].first_date = document.getElementById("first-date").value;
+            map[current_app].author = document.getElementById("author").value;
+            map[current_app].disabled = (document.getElementById("disabled").checked)?"true":"false";
+
+            if (document.getElementById("price").value == 0)
+                map[current_app].price = "free";
+            else
+                map[current_app].price = "$" + document.getElementById("price").value;
+
+            map[current_app].github = document.getElementById("github").value;
+            map[current_app].license = document.getElementById("license").value;
+            map[current_app].package = document.getElementById("package").value;
+
+            // platforms
+            var platform = [];
+            if (document.getElementById("windows").checked)
+            {
+                platform.push({
+                    "name":"Windows",
+                    "platformid": 0,
+                    "url": document.getElementById("win-download_url").value,
+                    "version": document.getElementById("win-version").value,
+                    "install_requires": document.getElementById("win-requirements").value.split(","),
+                    "isCmdTool": document.getElementById("win-isCmdTool").checked?"true":"false",
+                    "startUpFile": document.getElementById("win-startUpFile").value,
+                    "isZipped": document.getElementById("win-isZipped").checked?"true":"false",
+                    "isInstaller": document.getElementById("win-isInstaller").checked?"true":"false"
+                });
+            }
+            if (document.getElementById("android").checked)
+            {
+                platform.push({
+                    "name":"Android",
+                    "platformid": 1,
+                    "url": document.getElementById("and-download_url").value,
+                    "version": document.getElementById("and-version").value,
+                    "install_requires": document.getElementById("and-requirements").value.split(","),
+                    "isCmdTool": document.getElementById("and-isCmdTool").checked?"true":"false",
+                    "startUpFile": document.getElementById("and-startUpFile").value,
+                    "isZipped": document.getElementById("and-isZipped").checked?"true":"false",
+                    "isInstaller": document.getElementById("and-isInstaller").checked?"true":"false"
+                });
+            }
+            if (document.getElementById("linux").checked)
+            {
+                platform.push({
+                    "name":"Linux",
+                    "platformid": 2,
+                    "url": document.getElementById("lin-download_url").value,
+                    "version": document.getElementById("lin-version").value,
+                    "install_requires": document.getElementById("lin-requirements").value.split(","),
+                    "isCmdTool": document.getElementById("lin-isCmdTool").checked?"true":"false",
+                    "startUpFile": document.getElementById("lin-startUpFile").value,
+                    "isZipped": document.getElementById("lin-isZipped").checked?"true":"false",
+                    "isInstaller": document.getElementById("lin-isInstaller").checked?"true":"false"
+                });
+            }
+            
+            map[current_app].platform = platform;
+
+
+            // display apps
+            var arbo = document.getElementById("arbo");
+            arbo.innerHTML = "";
+            i = 0;
+            map.forEach(element => {
+                arbo.innerHTML += `<button onclick="loadapp(` + (i++) + `)">` + element.name + `</button>`;
+            });
+            // display repo as json string
+            document.getElementById("json-output").innerText = JSON.stringify(map);
+
+            // display repo as json string
+            document.getElementById("json-output").innerText = JSON.stringify(map);
+        }
+
+        function getRepo() {
+            fetch("https://raw.githubusercontent.com/4RE5group/4re5-repository/refs/heads/main/repo.json").then(response => response.text())
+            .then(data => {
+                var arbo = document.getElementById("arbo");
+                arbo.innerHTML = "";
+                map = JSON.parse(data);
+                i = 0;
+                map.forEach(element => {
+                    arbo.innerHTML += `<button onclick="loadapp(` + (i++) + `)">` + element.name + `</button>`;
+                });
+                // display repo as json string
+                document.getElementById("json-output").innerText = JSON.stringify(map);
+            });
+            
+        }
+
+        function loadapp(id) {
+            if (!map)
+                alert("you need to fetch repo before editing it!");
+            current_app = id;
+            document.getElementById("name").value = map[id].name;
+            document.getElementById("description").value = map[id].description;
+            document.getElementById("preview-image").src = map[id].image;
+            document.getElementById("image").value = map[id].image;
+            document.getElementById("first-date").value = map[id].first_date;
+            document.getElementById("author").value = map[id].author;
+            document.getElementById("disabled").checked = (map[id].disabled == "true");
+
+            if (map[id].price == "free")
+                document.getElementById("price").value = 0;
+            else
+                document.getElementById("price").value = map[id].price.replaceAll("$", "");
+
+            document.getElementById("github").value = map[id].github;
+            document.getElementById("license").value = map[id].license;
+            document.getElementById("package").value = map[id].package;
+
+            document.getElementById("win").style.background = "grey";
+            document.getElementById("windows").checked = false;
+            document.getElementById("and").style.background = "grey";
+            document.getElementById("android").checked = false;
+            document.getElementById("lin").style.background = "grey";
+            document.getElementById("linux").checked = false;
+
+            var platform = map[id].platform;
+            for (let index = 0; index < platform.length; index++) {
+                if (platform[index].platformid == 0)
+                {
+                    document.getElementById("win").style.background = "transparent";
+                    document.getElementById("windows").checked = true;
+                    document.getElementById("win-version").value = platform[index].version;
+                    document.getElementById("win-download_url").value = platform[index].url;
+                    document.getElementById("win-requirements").value = platform[index].install_requires.join(",");
+                    document.getElementById("win-startUpFile").value = platform[index].startUpFile;
+
+                    document.getElementById("win-isCmdTool").checked = (platform[index].isCmdTool == "true");
+                    document.getElementById("win-isZipped").checked = (platform[index].isZipped == "true");
+                    document.getElementById("win-isInstaller").checked = (platform[index].isInstaller == "true");
+                }
+                else if (platform[index].platformid == 1)
+                {
+                    document.getElementById("and").style.background = "transparent";
+                    document.getElementById("android").checked = true;
+                    document.getElementById("and-version").value = platform[index].version;
+                    document.getElementById("and-download_url").value = platform[index].url;
+                    document.getElementById("and-requirements").value = platform[index].install_requires.join(",");
+                    document.getElementById("and-startUpFile").value = platform[index].startUpFile;
+
+                    document.getElementById("and-isCmdTool").checked = (platform[index].isCmdTool == "true");
+                    document.getElementById("and-isZipped").checked = (platform[index].isZipped == "true");
+                    document.getElementById("and-isInstaller").checked = (platform[index].isInstaller == "true");
+                }
+                else if (platform[index].platformid == 2)
+                {
+                    document.getElementById("lin").style.background = "transparent";
+                    document.getElementById("linux").checked = true;
+                    document.getElementById("lin-version").value = platform[index].version;
+                    document.getElementById("lin-download_url").value = platform[index].url;
+                    document.getElementById("lin-requirements").value = platform[index].install_requires.join(",");
+                    document.getElementById("lin-startUpFile").value = platform[index].startUpFile;
+
+                    document.getElementById("lin-isCmdTool").checked = (platform[index].isCmdTool == "true");
+                    document.getElementById("lin-isZipped").checked = (platform[index].isZipped == "true");
+                    document.getElementById("lin-isInstaller").checked = (platform[index].isInstaller == "true");
+                }
+            }
+        }
+    </script>
+</body>
+</html>
