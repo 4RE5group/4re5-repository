@@ -49,6 +49,8 @@
             <input id="price" type="number" value="0">
             <label>Github url</label>
             <input id="github" type="text" placeholder="" value="https://github.com/4re5group/">
+            <label>Documentation url</label>
+            <input id="docs" type="text" placeholder="" value="https://github.com/4re5group/">
             <label>License</label>
             <input id="license" type="text" placeholder="" value="GNU GPL 3.0">
             
@@ -145,6 +147,7 @@
                 "price": "free",
                 "github": "https://github.com/4RE5group/...",
                 "image": "",
+                "docs": "",
                 "first_date": "",
                 "author": "4re5 group",
                 "license": "",
@@ -172,6 +175,7 @@
             map[current_app].github = document.getElementById("github").value;
             map[current_app].license = document.getElementById("license").value;
             map[current_app].package = document.getElementById("package").value;
+            map[current_app].docs = document.getElementById("docs").value;
 
             // platforms
             var platform = [];
@@ -269,6 +273,7 @@
                 document.getElementById("price").value = map[id].price.replaceAll("$", "");
 
             document.getElementById("github").value = map[id].github;
+            document.getElementById("docs").value = map[id].docs;
             document.getElementById("license").value = map[id].license;
             document.getElementById("package").value = map[id].package;
 
@@ -324,4 +329,5 @@
         }
     </script>
 </body>
+
 </html>
