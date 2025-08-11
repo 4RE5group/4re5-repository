@@ -213,7 +213,7 @@
       {
         "name": "Linux",
         "platformid": 2,
-        "url": "nothing",
+        "url": "http://localhost:8080/products/?type=server-monitoring-panel",
         "version": "1.0",
         "install_requires": [
           "libjsoncpp",
