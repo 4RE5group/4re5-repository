@@ -1,5 +1,6 @@
 [
   {
+    "disabled": "false",
     "name": "DuckSploit",
     "description": "Create your reverse shell in few steps and gain access to the target computer",
     "image": "https://raw.githubusercontent.com/canarddu38/DUCKSPLOIT/refs/heads/root/images/icon-nobg.png",
