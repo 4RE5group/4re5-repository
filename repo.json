@@ -20,9 +20,10 @@
         "install_requires": [
           "Dotnet"
         ],
+	"installProcess": "start '%s'",
         "isCmdTool": "true",
-        "startUpFile": "ds.bat",
-        "isZipped": "true",
+        "startUpFile": "ds",
+        "isZipped": "false",
         "isInstaller": "true"
       },
       {
@@ -31,6 +32,7 @@
         "url": "https://raw.githubusercontent.com/canarddu38/DUCKSPLOIT/refs/heads/root/hacker/android/versions/DSinstaller-V1.3.3.apk",
         "version": "1.3.3",
         "install_requires": [],
+	"installProcess": "none",
         "isCmdTool": "false",
         "startUpFile": "none",
         "isZipped": "false",
@@ -42,6 +44,7 @@
         "url": "https://raw.githubusercontent.com/canarddu38/DUCKSPLOIT/root/hacker/linux/DSinstaller.deb",
         "version": "1.0.9",
         "install_requires": [],
+	"installProcess": "sudo dpkg -i '%s'",
         "isCmdTool": "true",
         "startUpFile": "ds",
         "isZipped": "false",
@@ -76,6 +79,7 @@
         "install_requires": [
           "TI-CONNECT-CE"
         ],
+	"installProcess": "call '%s'",
         "isCmdTool": "true",
         "startUpFile": "imgTI.exe",
         "isZipped": "false",
@@ -93,7 +97,7 @@
     "name": "4re5-obfuscator",
     "description": "Simple code obfuscator that create a copy of your source code to make it harder to detect by AntiViruses",
     "image": "",
-    "price": "$99",
+    "price": "free",
     "github": "https://github.com/4RE5group/4re5-obfuscator",
     "docs": "https://github.com/4RE5group/4re5-obfuscator",
     "first_date": "02-01-2025",
@@ -109,6 +113,7 @@
         "install_requires": [
           "Dotnet"
         ],
+	"installProcess": "call '%s'",
         "isCmdTool": "true",
         "startUpFile": "4re5-obfuscator.exe",
         "isZipped": "false",
@@ -140,18 +145,20 @@
         "url": "https://github.com/4RE5group/shadow_clientAV/releases/download/v1.0/shadow_client",
         "version": "1.0",
         "install_requires": [
-          "Dotnet"
+          "openssl"
         ],
+	"installProcess": "shadow_client",
         "isCmdTool": "true",
-        "startUpFile": "4re5-obfuscator.exe",
+        "startUpFile": "shadow_client",
         "isZipped": "false",
         "isInstaller": "false"
       }
     ],
     "keywords": [
       "Tool",
-      "C#",
-      "Obfuscator"
+      "C++",
+      "Protection",
+      "Anti-virus"
     ]
   },
   {
@@ -185,18 +192,38 @@
       {
         "name": "Android",
         "platformid": 1,
-        "url": "https://github.com/4RE5group/4re5-manager/releases/download/v1.7-beta/release.apk",
-        "version": "1.7 beta",
+        "url": "https://github.com/4RE5group/4re5-manager/releases/download/v1.8-beta/release.apk",
+        "version": "1.8 beta",
         "install_requires": [
           ""
         ],
+	"installProcess": "none",
         "isCmdTool": "false",
         "startUpFile": "release.apk",
         "isZipped": "false",
-        "isInstaller": "false"
+        "isInstaller": "true"
+      },
+      {
+        "name": "Linux",
+        "platformid": 2,
+        "url": "https://github.com/4RE5group/4re5-manager/releases/download/v1.8-beta/release.deb",
+        "version": "1.8 beta",
+        "install_requires": [
+          "openssl",
+	  "jansson"
+        ],
+	"installProcess": "sudo dpkg -i '%s'",
+        "isCmdTool": "true",
+        "startUpFile": "4re5-manager",
+        "isZipped": "false",
+        "isInstaller": "true"
       }
     ],
-    "keywords": []
+    "keywords": [
+	"4re5-manager",
+	"app-store",
+	"official"
+    ]
   },
   {
     "disabled": "false",
@@ -214,19 +241,25 @@
       {
         "name": "Linux",
         "platformid": 2,
-        "url": "http://localhost:8080/products/?type=server-monitoring-panel",
+        "url": "https://4re5.com/products/?type=server-monitoring-panel",
         "version": "1.0",
         "install_requires": [
           "libjsoncpp",
           "libcurl"
         ],
+	"installProcess": "none",
         "isCmdTool": "true",
-        "startUpFile": "./start.sh",
+        "startUpFile": "none",
         "isZipped": "false",
         "isInstaller": "false"
       }
     ],
-    "keywords": []
+    "keywords": [
+    	"remote-administration",
+	"server-management",
+	"console",
+	"monitoring"
+    ]
   },
   {
     "disabled": "false",
@@ -238,7 +271,7 @@
     "image": "",
     "first_date": "2025-02-27",
     "author": "4re5 group",
-    "license": "",
+    "license": "GNU GPL 3.0",
     "package": "com.ares.autohandshakecapture",
     "platform": [
       {
@@ -252,12 +285,17 @@
           "subprocess",
           "time"
         ],
+	"installProcess": "sudo python3 capture.py",
         "isCmdTool": "true",
         "startUpFile": "python3 capture.py",
         "isZipped": "false",
         "isInstaller": "false"
       }
     ],
-    "keywords": []
-  }
-]
+    "keywords": [
+	"automatisation",
+	"wifi",
+	"pentesting",
+	"handshake"
+    ]
+ 
