@@ -79,7 +79,7 @@
         "install_requires": [
           "TI-CONNECT-CE"
         ],
-	"installProcess": "call '%s'",
+		"installProcess": "call '%s'",
         "isCmdTool": "true",
         "startUpFile": "imgTI.exe",
         "isZipped": "false",
