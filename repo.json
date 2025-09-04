@@ -247,7 +247,7 @@
           "libjsoncpp",
           "libcurl"
         ],
-	"installProcess": "none",
+		"installProcess": "none",
         "isCmdTool": "true",
         "startUpFile": "none",
         "isZipped": "false",
@@ -256,9 +256,9 @@
     ],
     "keywords": [
     	"remote-administration",
-	"server-management",
-	"console",
-	"monitoring"
+		"server-management",
+		"console",
+		"monitoring"
     ]
   },
   {
