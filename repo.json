@@ -20,7 +20,7 @@
         "install_requires": [
           "Dotnet"
         ],
-	"installProcess": "start '%s'",
+		"installProcess": "start '%s'",
         "isCmdTool": "true",
         "startUpFile": "ds",
         "isZipped": "false",
@@ -32,7 +32,7 @@
         "url": "https://raw.githubusercontent.com/canarddu38/DUCKSPLOIT/refs/heads/root/hacker/android/versions/DSinstaller-V1.3.3.apk",
         "version": "1.3.3",
         "install_requires": [],
-	"installProcess": "none",
+		"installProcess": "none",
         "isCmdTool": "false",
         "startUpFile": "none",
         "isZipped": "false",
@@ -43,8 +43,10 @@
         "platformid": 2,
         "url": "https://raw.githubusercontent.com/canarddu38/DUCKSPLOIT/root/hacker/linux/DSinstaller.deb",
         "version": "1.0.9",
-        "install_requires": [],
-	"installProcess": "sudo dpkg -i '%s'",
+        "install_requires": [
+			"python3"
+		],
+		"installProcess": "sudo dpkg -i '%s'",
         "isCmdTool": "true",
         "startUpFile": "ds",
         "isZipped": "false",
@@ -111,9 +113,9 @@
         "url": "https://github.com/4RE5group/4re5-obfuscator/releases/download/v1.0/4re5-obfuscator.exe",
         "version": "1.0",
         "install_requires": [
-          "Dotnet"
+          ".NET"
         ],
-	"installProcess": "call '%s'",
+		"installProcess": "call '%s'",
         "isCmdTool": "true",
         "startUpFile": "4re5-obfuscator.exe",
         "isZipped": "false",
@@ -142,12 +144,12 @@
       {
         "name": "Linux",
         "platformid": 2,
-        "url": "https://github.com/4RE5group/shadow_clientAV/releases/download/v1.0/shadow_client",
+        "url": "https://github.com/4RE5group/shadow_clientAV/releases/latest/download/shadow_client",
         "version": "1.0",
         "install_requires": [
-          "openssl"
+          "libssl-dev"
         ],
-	"installProcess": "shadow_client",
+		"installProcess": "shadow_client",
         "isCmdTool": "true",
         "startUpFile": "shadow_client",
         "isZipped": "false",
@@ -192,12 +194,12 @@
       {
         "name": "Android",
         "platformid": 1,
-        "url": "https://github.com/4RE5group/4re5-manager/releases/download/v1.8-beta/release.apk",
+        "url": "https://github.com/4RE5group/4re5-manager/releases/latest/download/release.apk",
         "version": "1.8 beta",
         "install_requires": [
           ""
         ],
-	"installProcess": "none",
+		"installProcess": "none",
         "isCmdTool": "false",
         "startUpFile": "release.apk",
         "isZipped": "false",
@@ -206,13 +208,13 @@
       {
         "name": "Linux",
         "platformid": 2,
-        "url": "https://github.com/4RE5group/4re5-manager/releases/download/v1.8-beta/release.deb",
+        "url": "https://github.com/4RE5group/4re5-manager/releases/latest/download/release.deb",
         "version": "1.8 beta",
         "install_requires": [
           "openssl",
-	  "jansson"
+	  	  "jansson"
         ],
-	"installProcess": "sudo dpkg -i '%s'",
+		"installProcess": "sudo dpkg -i '%s'",
         "isCmdTool": "true",
         "startUpFile": "4re5-manager",
         "isZipped": "false",
@@ -285,9 +287,9 @@
           "subprocess",
           "time"
         ],
-	"installProcess": "sudo python3 capture.py",
+		"installProcess": "sudo python3 capture.py",
         "isCmdTool": "true",
-        "startUpFile": "python3 capture.py",
+        "startUpFile": "capture.py",
         "isZipped": "false",
         "isInstaller": "false"
       }
