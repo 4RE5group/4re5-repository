@@ -42,7 +42,11 @@
             <input id="image" type="text" placeholder="">
             <label>Creation date</label>
             <input id="first-date" type="date">
-
+            <label>Type</label>
+            <label>app<input id="type-app" type="checkbox"></label>
+            <label>server<input id="type-server" type="checkbox"></label>
+            <label>cli<input id="type-cli" type="checkbox"></label>
+            
             <label>Author</label>
             <input id="author" type="text" placeholder="" value="4re5 group">
             <label>Price (in $)</label>
@@ -147,6 +151,7 @@
                 "price": "free",
                 "github": "https://github.com/4RE5group/...",
                 "image": "",
+                "type": "",
                 "docs": "",
                 "first_date": "",
                 "author": "4re5 group",
@@ -177,6 +182,9 @@
             map[current_app].package = document.getElementById("package").value;
             map[current_app].docs = document.getElementById("docs").value;
 
+            map[current_app].type = ((document.getElementById("type-app").checked)?"/app":"")+((document.getElementById("type-server").checked)?"/server":"")+((document.getElementById("type-cli").checked)?"/cli":"");
+            if (map[current_app].type.startsWith("/"))
+                map[current_app].type = map[current_app].type.substring(1);
             // platforms
             var platform = [];
             if (document.getElementById("windows").checked)
@@ -331,3 +339,4 @@
 </body>
 
 </html>
+
