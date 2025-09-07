@@ -185,6 +185,7 @@
             map[current_app].type = ((document.getElementById("type-app").checked)?"/app":"")+((document.getElementById("type-server").checked)?"/server":"")+((document.getElementById("type-cli").checked)?"/cli":"");
             if (map[current_app].type.startsWith("/"))
                 map[current_app].type = map[current_app].type.substring(1);
+            
             // platforms
             var platform = [];
             if (document.getElementById("windows").checked)
@@ -292,6 +293,22 @@
             document.getElementById("lin").style.background = "grey";
             document.getElementById("linux").checked = false;
 
+            // types
+            if (map[current_app].type.includes("server"))
+                document.getElementById("type-server").checked = true;
+            else
+                document.getElementById("type-server").checked = false;
+            // -------------------
+            if (map[current_app].type.includes("app"))
+                document.getElementById("type-app").checked = true;
+            else
+                document.getElementById("type-app").checked = false;
+            // -------------------
+            if (map[current_app].type.includes("cli"))
+                document.getElementById("type-cli").checked = true;
+            else
+                document.getElementById("type-cli").checked = false;
+
             var platform = map[id].platform;
             for (let index = 0; index < platform.length; index++) {
                 if (platform[index].platformid == 0)
@@ -339,4 +356,5 @@
 </body>
 
 </html>
+
 
