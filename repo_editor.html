@@ -294,17 +294,17 @@
             document.getElementById("linux").checked = false;
 
             // types
-            if (map[current_app].type.includes("server"))
+            if (map[id].type.includes("server"))
                 document.getElementById("type-server").checked = true;
             else
                 document.getElementById("type-server").checked = false;
             // -------------------
-            if (map[current_app].type.includes("app"))
+            if (map[id].type.includes("app"))
                 document.getElementById("type-app").checked = true;
             else
                 document.getElementById("type-app").checked = false;
             // -------------------
-            if (map[current_app].type.includes("cli"))
+            if (map[id].type.includes("cli"))
                 document.getElementById("type-cli").checked = true;
             else
                 document.getElementById("type-cli").checked = false;
@@ -356,5 +356,6 @@
 </body>
 
 </html>
+
 
 
