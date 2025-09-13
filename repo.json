@@ -21,6 +21,7 @@
         "install_requires": [
           "Dotnet"
         ],
+        "installProcess": "none",
         "isCmdTool": "true",
         "startUpFile": "ds",
         "isZipped": "false",
@@ -34,6 +35,7 @@
         "install_requires": [
           ""
         ],
+        "installProcess": "none",
         "isCmdTool": "false",
         "startUpFile": "none",
         "isZipped": "false",
@@ -47,6 +49,7 @@
         "install_requires": [
           "python3"
         ],
+        "installProcess": "none",
         "isCmdTool": "true",
         "startUpFile": "ds",
         "isZipped": "false",
@@ -328,8 +331,9 @@
         "url": "https://raw.githubusercontent.com/4RE5group/minecraft-external-plugins/refs/heads/main/plugin_manager.py",
         "version": "1.0",
         "install_requires": [
-          ""
+          "java"
         ],
+        "installProcess": "none",
         "isCmdTool": "true",
         "startUpFile": "plugin_manager.py",
         "isZipped": "false",
