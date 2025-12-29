@@ -29,7 +29,7 @@
         "version": "1.8 beta",
         "url": "https://github.com/4RE5group/4re5-manager/releases/latest/download/release.deb",
         "artifactType": "deb",
-        "checksum": "sha256:REPLACE_ME",
+        "checksum": "sha256:7515e0d187d1b95553ba431663edb57a66f4600b6636fd10e8f97c7bb08a0f9f",
         "installScope": "system",
         "dependencies": ["openssl", "jansson"],
         "isCmdTool": true,
