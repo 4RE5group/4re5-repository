@@ -18,7 +18,7 @@
         "version": "1.8 beta",
         "url": "https://github.com/4RE5group/4re5-manager/releases/latest/download/release.apk",
         "artifactType": "apk",
-        "checksum": "sha256:REPLACE_ME",
+        "checksum": "sha256:125e8f01dfb0e5beca83a1f2128125e0e5b8680e647055fac96b2e3d6f205876",
         "installScope": "user",
         "dependencies": [],
         "isCmdTool": false,
