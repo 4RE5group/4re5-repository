@@ -31,19 +31,12 @@
         "artifactType": "deb",
         "checksum": "sha256:REPLACE_ME",
         "installScope": "system",
-        "dependencies": [
-          "openssl",
-          "jansson"
-        ],
+        "dependencies": ["openssl", "jansson"],
         "isCmdTool": true,
         "startUpFile": "4re5-manager"
       }
     ],
-    "keywords": [
-      "4re5-manager",
-      "app-store",
-      "official"
-    ]
+    "keywords": ["4re5-manager", "app-store", "official"]
   },
   {
     "disabled": false,
@@ -66,20 +59,12 @@
         "artifactType": "binary",
         "checksum": "sha256:REPLACE_ME",
         "installScope": "user",
-        "dependencies": [
-          "libjsoncpp",
-          "libcurl"
-        ],
+        "dependencies": ["libjsoncpp", "libcurl"],
         "isCmdTool": true,
         "startUpFile": "none"
       }
     ],
-    "keywords": [
-      "remote-administration",
-      "server-management",
-      "console",
-      "monitoring"
-    ]
+    "keywords": ["remote-administration", "server-management", "console", "monitoring"]
   },
   {
     "disabled": false,
@@ -102,32 +87,22 @@
         "artifactType": "binary",
         "checksum": "sha256:REPLACE_ME",
         "installScope": "user",
-        "dependencies": [
-          "python3",
-          "csv",
-          "subprocess",
-          "time"
-        ],
+        "dependencies": ["python3", "csv", "subprocess", "time"],
         "isCmdTool": true,
         "startUpFile": "capture.py"
       }
     ],
-    "keywords": [
-      "automatisation",
-      "wifi",
-      "pentesting",
-      "handshake"
-    ]
+    "keywords": ["automatisation", "wifi", "pentesting", "handshake"]
   },
   {
     "disabled": false,
     "name": "minecraft-external-plugins",
     "description": "The lightest and simplest Minecraft vanilla server handler that can add multiple commands",
     "price": "free",
-    "github": "https://github.com/4RE5group/minecraft-external-plugins",
-    "image": "",
     "type": "server",
+    "github": "https://github.com/4RE5group/minecraft-external-plugins",
     "docs": "https://github.com/4RE5group/minecraft-external-plugins",
+    "image": "",
     "first_date": "2024-06-03",
     "author": "4re5 group",
     "license": "GNU GPL 3.0",
@@ -140,168 +115,161 @@
         "artifactType": "binary",
         "checksum": "sha256:REPLACE_ME",
         "installScope": "user",
-        "dependencies": [
-          "java"
-        ],
+        "dependencies": ["java"],
         "isCmdTool": true,
         "startUpFile": "plugin_manager.py"
       }
     ],
-    "keywords": [
-      "automatisation",
-      "wifi",
-      "pentesting",
-      "handshake"
-    ]
+    "keywords": []
   },
   {
     "disabled": false,
-    "name": "4re5 manager",
-    "description": "Official 4re5 app downloader&updater with 4re5 security features for authentification and more",
+    "name": "DuckSploit",
+    "description": "Create your reverse shell in few steps and gain access to the target computer",
     "price": "free",
-    "type": "app",
-    "github": "https://github.com/4RE5group/4re5-manager",
-    "docs": "https://github.com/4RE5group/4re5-manager",
-    "image": "https://github.com/4RE5group/4re5-manager/blob/main/assets/icon.png?raw=true",
-    "first_date": "2025-06-29",
+    "type": "cli",
+    "github": "https://github.com/canarddu38/DuckSploit",
+    "docs": "https://ducksploit.com/docs/",
+    "image": "https://raw.githubusercontent.com/canarddu38/DUCKSPLOIT/refs/heads/root/images/icon-nobg.png",
+    "first_date": "2022-02-15",
     "author": "4re5 group",
-    "license": "GNU GPL 3.0",
-    "package": "com.ares",
+    "license": "Attribution-NonCommercial 4.0 International",
+    "package": "com.ares.ducksploit",
     "platform": [
       {
+        "platform": "windows",
+        "version": "1.1.4",
+        "url": "https://github.com/canarddu38/DUCKSPLOIT/raw/root/hacker/windows/versions/DSinstaller-1.1.4.exe",
+        "artifactType": "exe",
+        "checksum": "sha256:REPLACE_ME",
+        "installScope": "user",
+        "dependencies": ["Dotnet"],
+        "isCmdTool": true,
+        "startUpFile": "ds"
+      },
+      {
         "platform": "android",
-        "version": "1.8 beta",
-        "url": "https://github.com/4RE5group/4re5-manager/releases/latest/download/release.apk",
+        "version": "1.3.3",
+        "url": "https://raw.githubusercontent.com/canarddu38/DUCKSPLOIT/refs/heads/root/hacker/android/versions/DSinstaller-V1.3.3.apk",
         "artifactType": "apk",
         "checksum": "sha256:REPLACE_ME",
         "installScope": "user",
         "dependencies": [],
         "isCmdTool": false,
-        "startUpFile": "release.apk"
+        "startUpFile": "none"
       },
       {
         "platform": "linux",
-        "version": "1.8 beta",
-        "url": "https://github.com/4RE5group/4re5-manager/releases/latest/download/release.deb",
+        "version": "1.0.9",
+        "url": "https://raw.githubusercontent.com/canarddu38/DUCKSPLOIT/root/hacker/linux/DSinstaller.deb",
         "artifactType": "deb",
         "checksum": "sha256:REPLACE_ME",
-        "installScope": "system",
-        "dependencies": [
-          "openssl",
-          "jansson"
-        ],
-        "isCmdTool": true,
-        "startUpFile": "4re5-manager"
-      }
-    ],
-    "keywords": [
-      "4re5-manager",
-      "app-store",
-      "official"
-    ]
-  },
-  {
-    "disabled": false,
-    "name": "4re5net",
-    "description": "A light remote device management panel to control IOT devices or servers all around the world remotly and apply security patches",
-    "price": "$30",
-    "type": "server",
-    "github": "https://github.com/4RE5group/4re5net",
-    "docs": "https://4re5group.github.io/4re5net",
-    "image": "https://github.com/4RE5group/4re5-manager/blob/main/assets/icon.png?raw=true",
-    "first_date": "2025-06-20",
-    "author": "4re5 group",
-    "license": "AGPL-3.0",
-    "package": "com.ares.net",
-    "platform": [
-      {
-        "platform": "linux",
-        "version": "1.0",
-        "url": "https://4re5.com/products/?type=server-monitoring-panel",
-        "artifactType": "binary",
-        "checksum": "sha256:REPLACE_ME",
         "installScope": "user",
-        "dependencies": [
-          "libjsoncpp",
-          "libcurl"
-        ],
+        "dependencies": ["python3"],
         "isCmdTool": true,
-        "startUpFile": "none"
+        "startUpFile": "ds"
       }
     ],
-    "keywords": [
-      "remote-administration",
-      "server-management",
-      "console",
-      "monitoring"
-    ]
+    "keywords": ["Hacking", "Administration tool", "Malware", "RAT"]
   },
   {
     "disabled": false,
-    "name": "auto-handshake-capture",
-    "description": "Automated wifi handshake capture using airmon-ng tools",
+    "name": "imgTI",
+    "description": "TI-83 premium CE image to graph pixel art converter",
     "price": "free",
     "type": "cli",
-    "github": "https://github.com/4RE5group/auto-handshake-capture",
-    "docs": "https://github.com/4RE5group/auto-handshake-capture",
+    "github": "https://github.com/4RE5group/imgTI",
+    "docs": "https://github.com/4RE5group/imgTI",
     "image": "",
-    "first_date": "2025-02-27",
+    "first_date": "2024-10-05",
     "author": "4re5 group",
-    "license": "GNU GPL 3.0",
-    "package": "com.ares.autohandshakecapture",
+    "license": "GNU GPL",
+    "package": "com.ares.imgTI",
     "platform": [
       {
-        "platform": "linux",
+        "platform": "windows",
         "version": "1.0",
-        "url": "https://raw.githubusercontent.com/4RE5group/auto-handshake-capture/refs/heads/main/capture.py",
-        "artifactType": "binary",
+        "url": "https://github.com/4RE5group/imgTI/releases/download/v1.0/imgTI.exe",
+        "artifactType": "exe",
         "checksum": "sha256:REPLACE_ME",
         "installScope": "user",
-        "dependencies": [
-          "python3",
-          "csv",
-          "subprocess",
-          "time"
-        ],
+        "dependencies": ["TI-CONNECT-CE"],
         "isCmdTool": true,
-        "startUpFile": "capture.py"
+        "startUpFile": "imgTI.exe"
       }
     ],
-    "keywords": [
-      "automatisation",
-      "wifi",
-      "pentesting",
-      "handshake"
-    ]
+    "keywords": ["TI-83", "Tool", "Calculator"]
   },
   {
     "disabled": false,
-    "name": "minecraft-external-plugins",
-    "description": "The lightest and simplest Minecraft vanilla server handler that can add multiple commands",
+    "name": "4re5-obfuscator",
+    "description": "Simple code obfuscator that create a copy of your source code to make it harder to detect by AntiViruses",
     "price": "free",
-    "github": "https://github.com/4RE5group/minecraft-external-plugins",
+    "type": "cli",
+    "github": "https://github.com/4RE5group/4re5-obfuscator",
+    "docs": "https://github.com/4RE5group/4re5-obfuscator",
     "image": "",
-    "type": "server",
-    "docs": "https://github.com/4RE5group/minecraft-external-plugins",
-    "first_date": "2024-06-03",
+    "first_date": "2025-02-01",
     "author": "4re5 group",
     "license": "GNU GPL 3.0",
-    "package": "com.ares.minecraft-external-plugins",
+    "package": "com.ares.obfuscator",
+    "platform": [
+      {
+        "platform": "windows",
+        "version": "1.0",
+        "url": "https://github.com/4RE5group/4re5-obfuscator/releases/download/v1.0/4re5-obfuscator.exe",
+        "artifactType": "exe",
+        "checksum": "sha256:REPLACE_ME",
+        "installScope": "user",
+        "dependencies": [".NET"],
+        "isCmdTool": true,
+        "startUpFile": "4re5-obfuscator.exe"
+      }
+    ],
+    "keywords": ["Tool", "C#", "Obfuscator"]
+  },
+  {
+    "disabled": false,
+    "name": "Shadow Client",
+    "description": "Official 4re5 group antivirus for Linux based systems and Windows",
+    "price": "free",
+    "type": "cli",
+    "github": "https://github.com/4RE5group/shadow_clientAV",
+    "docs": "https://github.com/4RE5group/shadow_clientAV",
+    "image": "",
+    "first_date": "2025-01-19",
+    "author": "4re5 group",
+    "license": "MIT",
+    "package": "com.ares.shadowclient",
     "platform": [
       {
         "platform": "linux",
         "version": "1.0",
-        "url": "https://raw.githubusercontent.com/4RE5group/minecraft-external-plugins/refs/heads/main/plugin_manager.py",
+        "url": "https://github.com/4RE5group/shadow_clientAV/releases/latest/download/shadow_client",
         "artifactType": "binary",
         "checksum": "sha256:REPLACE_ME",
         "installScope": "user",
-        "dependencies": [
-          "java"
-        ],
+        "dependencies": ["libssl-dev"],
         "isCmdTool": true,
-        "startUpFile": "plugin_manager.py"
+        "startUpFile": "shadow_client"
       }
     ],
+    "keywords": ["Tool", "C++", "Protection", "Anti-virus"]
+  },
+  {
+    "disabled": true,
+    "name": "template",
+    "description": "",
+    "price": "free",
+    "type": "app",
+    "github": "https://github.com/4RE5group/...",
+    "docs": "https://docs link . abc",
+    "image": "",
+    "first_date": "1970-01-01",
+    "author": "4re5 group",
+    "license": "",
+    "package": "com.ares.",
+    "platform": [],
     "keywords": []
   }
 ]
