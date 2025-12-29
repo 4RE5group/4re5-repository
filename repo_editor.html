@@ -5,16 +5,21 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>4re5 repository json editor</title>
     <style>
-        input {
+        input, select {
             color: white;
-            background-color: transparent;border-color: black;
+            background-color: #444;
+            border: 1px solid black;
+            padding: 2px;
+        }
+        label {
+            margin-top: 5px;
         }
     </style>
 </head>
 <body style="height: 100vh; overflow: hidden; background-color: #323232; color: white; font-family: monospace;">
     <script>
         // init list of apps + current app
-        var map = new Map();
+        var map = [];
         var current_app = 0;
     </script>
 
@@ -30,22 +35,25 @@
     </div>
     <div style="width: 100%; height: 80%; display: flex; margin-top: 20px;">
         <!-- left -->
-        <div style="overflow-x: hidden; overflow-y: scroll; width: 50%; height: 100%; display: flex; flex-direction: column;">
+        <div style="overflow-x: hidden; overflow-y: scroll; width: 50%; height: 100%; display: flex; flex-direction: column; padding-right: 10px;">
             <label>Disabled<input id="disabled" type="checkbox"></label>
             
             <label>Name</label>
             <input id="name" type="text" placeholder="">
             <label>Description</label>
             <input id="description" type="text" placeholder="">
-            <img id="preview-image" style="width: 100px; height: 100px;" src="">
+            <img id="preview-image" style="width: 100px; height: 100px; object-fit: contain; background: #444;" src="">
             <label>Image</label>
-            <input id="image" type="text" placeholder="">
+            <input id="image" type="text" placeholder="" onchange="document.getElementById('preview-image').src = this.value">
             <label>Creation date</label>
             <input id="first-date" type="date">
+            
             <label>Type</label>
-            <label>app<input id="type-app" type="checkbox"></label>
-            <label>server<input id="type-server" type="checkbox"></label>
-            <label>cli<input id="type-cli" type="checkbox"></label>
+            <div style="display: flex; gap: 10px;">
+                <label>app<input name="type" id="type-app" value="app" type="radio"></label>
+                <label>server<input name="type" id="type-server" value="server" type="radio"></label>
+                <label>cli<input name="type" id="type-cli" value="cli" type="radio"></label>
+            </div>
             
             <label>Author</label>
             <input id="author" type="text" placeholder="" value="4re5 group">
@@ -60,6 +68,9 @@
             
             <label>Package</label>
             <input id="package" type="text" placeholder="" value="com.ares.">
+            
+            <label>Keywords (comma separated)</label>
+            <input id="keywords" type="text" placeholder="Tool, Utility">
 
             <!-- platform -->
             <div id="win" style="padding: 10px; width: 100%; display: flex; flex-direction: column; margin-top: 10px; background-color: gray;">
@@ -68,18 +79,24 @@
                 <input id="win-download_url" type="text">
                 <label>Version</label>
                 <input id="win-version" type="text" value="1.0">
-                <label>Requirements</label>
-                <input id="win-requirements" type="text" value="">
-                <label>startup File</label>
+                <label>Dependencies (comma separated)</label>
+                <input id="win-dependencies" type="text" value="">
+                <label>Startup File</label>
                 <input id="win-startUpFile" type="text">
-                <label>is Cmd Tool</label>
-                <input id="win-isCmdTool" type="checkbox">
-                <label>is Zipped</label>
-                <input id="win-isZipped" type="checkbox">
-                <label>is Installer</label>
-                <input id="win-isInstaller" type="checkbox">
-                <label>Post Installation Command</label>
-                <input id="win-installProcess" type="text">
+                <label>Is Cmd Tool <input id="win-isCmdTool" type="checkbox"></label>
+                
+                <label>Artifact Type</label>
+                <select id="win-artifactType">
+                    <option value="binary">binary</option>
+                    <option value="installer">installer</option>
+                </select>
+                <label>Checksum</label>
+                <input id="win-checksum" type="text" placeholder="sha256:...">
+                <label>Install Scope</label>
+                <select id="win-installScope">
+                    <option value="user">user</option>
+                    <option value="system">system</option>
+                </select>
             </div>
 
             <div id="and" style="padding: 10px; width: 100%; display: flex; flex-direction: column; margin-top: 10px; background-color: gray;">
@@ -88,18 +105,23 @@
                 <input id="and-download_url" type="text">
                 <label>Version</label>
                 <input id="and-version" type="text" value="1.0">
-                <label>Requirements</label>
-                <input id="and-requirements" type="text" value="">
-                <label>startup File</label>
+                <label>Dependencies (comma separated)</label>
+                <input id="and-dependencies" type="text" value="">
+                <label>Startup File</label>
                 <input id="and-startUpFile" type="text">
-                <label>is Cmd Tool</label>
-                <input id="and-isCmdTool" type="checkbox">
-                <label>is Zipped</label>
-                <input id="and-isZipped" type="checkbox">
-                <label>is Installer</label>
-                <input id="and-isInstaller" type="checkbox">
-                <label>Post Installation Command</label>
-                <input id="and-installProcess" type="text">
+                <label>Is Cmd Tool <input id="and-isCmdTool" type="checkbox"></label>
+                
+                <label>Artifact Type</label>
+                <select id="and-artifactType">
+                    <option value="apk">apk</option>
+                </select>
+                <label>Checksum</label>
+                <input id="and-checksum" type="text" placeholder="sha256:...">
+                <label>Install Scope</label>
+                <select id="and-installScope">
+                    <option value="user">user</option>
+                    <option value="system">system</option>
+                </select>
             </div>
 
             <div id="lin" style="padding: 10px; width: 100%; display: flex; flex-direction: column; margin-top: 10px; background-color: gray;">
@@ -108,29 +130,35 @@
                 <input id="lin-download_url" type="text">
                 <label>Version</label>
                 <input id="lin-version" type="text" value="1.0">
-                <label>Requirements</label>
-                <input id="lin-requirements" type="text" value="">
-                <label>startup File</label>
+                <label>Dependencies (comma separated)</label>
+                <input id="lin-dependencies" type="text" value="">
+                <label>Startup File</label>
                 <input id="lin-startUpFile" type="text">
-                <label>is Cmd Tool</label>
-                <input id="lin-isCmdTool" type="checkbox">
-                <label>is Zipped</label>
-                <input id="lin-isZipped" type="checkbox">
-                <label>is Installer</label>
-                <input id="lin-isInstaller" type="checkbox">
-                <label>Post Installation Command</label>
-                <input id="lin-installProcess" type="text">
+                <label>Is Cmd Tool <input id="lin-isCmdTool" type="checkbox"></label>
+                
+                <label>Artifact Type</label>
+                <select id="lin-artifactType">
+                    <option value="binary">binary</option>
+                    <option value="deb">deb</option>
+                </select>
+                <label>Checksum</label>
+                <input id="lin-checksum" type="text" placeholder="sha256:...">
+                <label>Install Scope</label>
+                <select id="lin-installScope">
+                    <option value="user">user</option>
+                    <option value="system">system</option>
+                </select>
             </div>
 
-            <button id="save" onclick="saveapp()">save</button>
+            <button id="save" onclick="saveapp()" style="margin-top: 20px; padding: 10px;">Save Changes</button>
         </div>
         <!-- right -->
         <div style="margin-left: 20px; width: 50%; height: 100%; display: flex; flex-direction: column;">
-            <div style="width: 100%; height: auto; overflow-y: scroll;">
-                <p>json output:</p>
-                <p id="json-output">{}</p>
+            <div style="width: 100%; height: 50%; overflow-y: scroll; background: #222; padding: 10px;">
+                <p style="margin-top: 0;">JSON output:</p>
+                <pre id="json-output" style="white-space: pre-wrap; word-wrap: break-word;">{}</pre>
             </div>
-            <div id="arbo" style="overflow-y: scroll; background-color: grey; width: 100%; height: 100%;">
+            <div id="arbo" style="overflow-y: scroll; background-color: #444; width: 100%; height: 50%; display: flex; flex-direction: column; gap: 5px; padding: 10px;">
 
             </div>
             
@@ -141,160 +169,174 @@
     <script>
         function copyToClipboard() {
             var copyText = document.getElementById("json-output");
-            // copyText.select();
-            // copyText.setSelectionRange(0, 99999); // For mobile devices
             navigator.clipboard.writeText(copyText.innerText);
-            alert("Copied");
+            alert("Copied JSON to clipboard");
         }
 
         function addNewApp() {
-            if (!map)
-                alert("you need to fetch repo before editing it!");
+            if (!map) map = [];
             map.push({
-                "disabled": "false",
-                "name": "template",
+                "disabled": false,
+                "name": "New App",
                 "description": "",
                 "price": "free",
                 "github": "https://github.com/4RE5group/...",
                 "image": "",
-                "type": "",
+                "type": "cli",
                 "docs": "",
-                "first_date": "",
+                "first_date": new Date().toISOString().split('T')[0],
                 "author": "4re5 group",
-                "license": "",
+                "license": "GNU GPL 3.0",
                 "package": "com.ares.",
                 "platform": [],
                 "keywords": []
             });
-            arbo.innerHTML += `<button onclick="loadapp(` + (map.length - 1) + `)">` + map[map.length - 1].name + `</button>`;
+            renderList();
+            loadapp(map.length - 1);
         }
-        function saveapp() {
-            if (!map)
-                alert("you need to fetch repo before editing it!");
-            map[current_app].name = document.getElementById("name").value;
-            map[current_app].description = document.getElementById("description").value;
-            map[current_app].image = document.getElementById("image").value;
-            map[current_app].first_date = document.getElementById("first-date").value;
-            map[current_app].author = document.getElementById("author").value;
-            map[current_app].disabled = (document.getElementById("disabled").checked)?"true":"false";
 
-            if (document.getElementById("price").value == 0)
-                map[current_app].price = "free";
-            else
-                map[current_app].price = "$" + document.getElementById("price").value;
-
-            map[current_app].github = document.getElementById("github").value;
-            map[current_app].license = document.getElementById("license").value;
-            map[current_app].package = document.getElementById("package").value;
-            map[current_app].docs = document.getElementById("docs").value;
-
-            map[current_app].type = ((document.getElementById("type-app").checked)?"/app":"")+((document.getElementById("type-server").checked)?"/server":"")+((document.getElementById("type-cli").checked)?"/cli":"");
-            if (map[current_app].type.startsWith("/"))
-                map[current_app].type = map[current_app].type.substring(1);
-            
-            // platforms
-            var platform = [];
-            if (document.getElementById("windows").checked)
-            {
-                platform.push({
-                    "name":"Windows",
-                    "platformid": 0,
-                    "url": document.getElementById("win-download_url").value,
-                    "version": document.getElementById("win-version").value,
-                    "install_requires": document.getElementById("win-requirements").value.split(","),
-                    "isCmdTool": document.getElementById("win-isCmdTool").checked?"true":"false",
-                    "startUpFile": document.getElementById("win-startUpFile").value,
-                    "isZipped": document.getElementById("win-isZipped").checked?"true":"false",
-                    "isInstaller": document.getElementById("win-isInstaller").checked?"true":"false",
-                    "installProcess": document.getElementById("win-installProcess").value
-                });
-            }
-            if (document.getElementById("android").checked)
-            {
-                platform.push({
-                    "name":"Android",
-                    "platformid": 1,
-                    "url": document.getElementById("and-download_url").value,
-                    "version": document.getElementById("and-version").value,
-                    "install_requires": document.getElementById("and-requirements").value.split(","),
-                    "isCmdTool": document.getElementById("and-isCmdTool").checked?"true":"false",
-                    "startUpFile": document.getElementById("and-startUpFile").value,
-                    "isZipped": document.getElementById("and-isZipped").checked?"true":"false",
-                    "isInstaller": document.getElementById("and-isInstaller").checked?"true":"false",
-                    "installProcess": document.getElementById("and-installProcess").value
-                });
-            }
-            if (document.getElementById("linux").checked)
-            {
-                platform.push({
-                    "name":"Linux",
-                    "platformid": 2,
-                    "url": document.getElementById("lin-download_url").value,
-                    "version": document.getElementById("lin-version").value,
-                    "install_requires": document.getElementById("lin-requirements").value.split(","),
-                    "isCmdTool": document.getElementById("lin-isCmdTool").checked?"true":"false",
-                    "startUpFile": document.getElementById("lin-startUpFile").value,
-                    "isZipped": document.getElementById("lin-isZipped").checked?"true":"false",
-                    "isInstaller": document.getElementById("lin-isInstaller").checked?"true":"false",
-                    "installProcess": document.getElementById("linn-installProcess").value
-                });
-            }
-            
-            map[current_app].platform = platform;
-
-
-            // display apps
+        function renderList() {
             var arbo = document.getElementById("arbo");
             arbo.innerHTML = "";
-            i = 0;
-            map.forEach(element => {
-                arbo.innerHTML += `<button onclick="loadapp(` + (i++) + `)">` + element.name + `</button>`;
+            map.forEach((element, index) => {
+                let btn = document.createElement("button");
+                btn.innerText = element.name;
+                btn.onclick = () => loadapp(index);
+                btn.style.padding = "5px";
+                btn.style.textAlign = "left";
+                arbo.appendChild(btn);
             });
-            // display repo as json string
-            document.getElementById("json-output").innerText = JSON.stringify(map);
+        }
 
-            // display repo as json string
-            document.getElementById("json-output").innerText = JSON.stringify(map);
+        function saveapp() {
+            if (!map || map.length === 0) {
+                alert("No app loaded!");
+                return;
+            }
+            
+            let app = map[current_app];
+            app.name = document.getElementById("name").value;
+            app.description = document.getElementById("description").value;
+            app.image = document.getElementById("image").value;
+            app.first_date = document.getElementById("first-date").value;
+            app.author = document.getElementById("author").value;
+            app.disabled = document.getElementById("disabled").checked;
+
+            if (document.getElementById("price").value == 0)
+                app.price = "free";
+            else
+                app.price = "$" + document.getElementById("price").value;
+
+            app.github = document.getElementById("github").value;
+            app.license = document.getElementById("license").value;
+            app.package = document.getElementById("package").value;
+            app.docs = document.getElementById("docs").value;
+
+            // Type
+            if (document.getElementById("type-app").checked) app.type = "app";
+            else if (document.getElementById("type-server").checked) app.type = "server";
+            else if (document.getElementById("type-cli").checked) app.type = "cli";
+            
+            // Keywords
+            let kw = document.getElementById("keywords").value;
+            app.keywords = kw ? kw.split(",").map(s => s.trim()).filter(s => s) : [];
+
+            // Platforms
+            var platform = [];
+            
+            // Windows
+            if (document.getElementById("windows").checked) {
+                platform.push({
+                    "platform": "windows",
+                    "url": document.getElementById("win-download_url").value,
+                    "version": document.getElementById("win-version").value,
+                    "dependencies": document.getElementById("win-dependencies").value.split(",").map(s => s.trim()).filter(s => s),
+                    "isCmdTool": document.getElementById("win-isCmdTool").checked,
+                    "startUpFile": document.getElementById("win-startUpFile").value,
+                    "artifactType": document.getElementById("win-artifactType").value,
+                    "checksum": document.getElementById("win-checksum").value,
+                    "installScope": document.getElementById("win-installScope").value
+                });
+            }
+            
+            // Android
+            if (document.getElementById("android").checked) {
+                platform.push({
+                    "platform": "android",
+                    "url": document.getElementById("and-download_url").value,
+                    "version": document.getElementById("and-version").value,
+                    "dependencies": document.getElementById("and-dependencies").value.split(",").map(s => s.trim()).filter(s => s),
+                    "isCmdTool": document.getElementById("and-isCmdTool").checked,
+                    "startUpFile": document.getElementById("and-startUpFile").value,
+                    "artifactType": document.getElementById("and-artifactType").value,
+                    "checksum": document.getElementById("and-checksum").value,
+                    "installScope": document.getElementById("and-installScope").value
+                });
+            }
+            
+            // Linux
+            if (document.getElementById("linux").checked) {
+                platform.push({
+                    "platform": "linux",
+                    "url": document.getElementById("lin-download_url").value,
+                    "version": document.getElementById("lin-version").value,
+                    "dependencies": document.getElementById("lin-dependencies").value.split(",").map(s => s.trim()).filter(s => s),
+                    "isCmdTool": document.getElementById("lin-isCmdTool").checked,
+                    "startUpFile": document.getElementById("lin-startUpFile").value,
+                    "artifactType": document.getElementById("lin-artifactType").value,
+                    "checksum": document.getElementById("lin-checksum").value,
+                    "installScope": document.getElementById("lin-installScope").value
+                });
+            }
+            
+            app.platform = platform;
+
+            renderList();
+            document.getElementById("json-output").innerText = JSON.stringify(map, null, 2);
         }
 
         function getRepo() {
-            fetch("https://raw.githubusercontent.com/4RE5group/4re5-repository/refs/heads/main/repo.json").then(response => response.text())
+            fetch("https://raw.githubusercontent.com/4RE5group/4re5-repository/refs/heads/main/repo.json")
+            .then(response => response.text())
             .then(data => {
-                var arbo = document.getElementById("arbo");
-                arbo.innerHTML = "";
-                map = JSON.parse(data);
-                i = 0;
-                map.forEach(element => {
-                    arbo.innerHTML += `<button onclick="loadapp(` + (i++) + `)">` + element.name + `</button>`;
-                });
-                // display repo as json string
-                document.getElementById("json-output").innerText = JSON.stringify(map);
-            });
-            
+                try {
+                    map = JSON.parse(data);
+                    renderList();
+                    if (map.length > 0) loadapp(0);
+                    document.getElementById("json-output").innerText = JSON.stringify(map, null, 2);
+                } catch (e) {
+                    alert("Error parsing JSON: " + e);
+                }
+            })
+            .catch(err => alert("Error fetching repo: " + err));
         }
 
         function loadapp(id) {
-            if (!map)
-                alert("you need to fetch repo before editing it!");
+            if (!map || !map[id]) return;
             current_app = id;
-            document.getElementById("name").value = map[id].name;
-            document.getElementById("description").value = map[id].description;
-            document.getElementById("preview-image").src = map[id].image;
-            document.getElementById("image").value = map[id].image;
-            document.getElementById("first-date").value = map[id].first_date;
-            document.getElementById("author").value = map[id].author;
-            document.getElementById("disabled").checked = (map[id].disabled == "true");
+            let app = map[id];
+            
+            document.getElementById("name").value = app.name || "";
+            document.getElementById("description").value = app.description || "";
+            document.getElementById("image").value = app.image || "";
+            document.getElementById("preview-image").src = app.image || "";
+            document.getElementById("first-date").value = app.first_date || "";
+            document.getElementById("author").value = app.author || "";
+            document.getElementById("disabled").checked = app.disabled === true || app.disabled === "true";
 
-            if (map[id].price == "free")
+            if (app.price == "free")
                 document.getElementById("price").value = 0;
             else
-                document.getElementById("price").value = map[id].price.replaceAll("$", "");
+                document.getElementById("price").value = (app.price || "").replace("$", "");
 
-            document.getElementById("github").value = map[id].github;
-            document.getElementById("docs").value = map[id].docs;
-            document.getElementById("license").value = map[id].license;
-            document.getElementById("package").value = map[id].package;
+            document.getElementById("github").value = app.github || "";
+            document.getElementById("docs").value = app.docs || "";
+            document.getElementById("license").value = app.license || "";
+            document.getElementById("package").value = app.package || "";
+            
+            document.getElementById("keywords").value = (app.keywords || []).join(", ");
 
+            // Reset platforms
             document.getElementById("win").style.background = "grey";
             document.getElementById("windows").checked = false;
             document.getElementById("and").style.background = "grey";
@@ -302,73 +344,60 @@
             document.getElementById("lin").style.background = "grey";
             document.getElementById("linux").checked = false;
 
-            // types
-            if (map[id].type.includes("server"))
-                document.getElementById("type-server").checked = true;
-            else
-                document.getElementById("type-server").checked = false;
-            // -------------------
-            if (map[id].type.includes("app"))
-                document.getElementById("type-app").checked = true;
-            else
-                document.getElementById("type-app").checked = false;
-            // -------------------
-            if (map[id].type.includes("cli"))
-                document.getElementById("type-cli").checked = true;
-            else
-                document.getElementById("type-cli").checked = false;
+            // Type
+            let typeStr = app.type || "";
+            document.getElementById("type-app").checked = typeStr.includes("app");
+            document.getElementById("type-server").checked = typeStr.includes("server");
+            document.getElementById("type-cli").checked = typeStr.includes("cli");
 
-            var platform = map[id].platform;
-            for (let index = 0; index < platform.length; index++) {
-                if (platform[index].platformid == 0)
-                {
-                    document.getElementById("win").style.background = "transparent";
-                    document.getElementById("windows").checked = true;
-                    document.getElementById("win-version").value = platform[index].version;
-                    document.getElementById("win-download_url").value = platform[index].url;
-                    document.getElementById("win-requirements").value = platform[index].install_requires.join(",");
-                    document.getElementById("win-startUpFile").value = platform[index].startUpFile;
+            // Platforms
+            if (app.platform) {
+                app.platform.forEach(p => {
+                    let plat = p.platform ? p.platform.toLowerCase() : (p.name ? p.name.toLowerCase() : "");
+                    if (p.platformid === 0) plat = "windows";
+                    if (p.platformid === 1) plat = "android";
+                    if (p.platformid === 2) plat = "linux";
 
-                    document.getElementById("win-isCmdTool").checked = (platform[index].isCmdTool == "true");
-                    document.getElementById("win-isZipped").checked = (platform[index].isZipped == "true");
-                    document.getElementById("win-isInstaller").checked = (platform[index].isInstaller == "true");
-                    document.getElementById("win-installProcess").value = platform[index].installProcess;
-                }
-                else if (platform[index].platformid == 1)
-                {
-                    document.getElementById("and").style.background = "transparent";
-                    document.getElementById("android").checked = true;
-                    document.getElementById("and-version").value = platform[index].version;
-                    document.getElementById("and-download_url").value = platform[index].url;
-                    document.getElementById("and-requirements").value = platform[index].install_requires.join(",");
-                    document.getElementById("and-startUpFile").value = platform[index].startUpFile;
+                    let deps = p.dependencies || p.install_requires || [];
+                    let isCmd = p.isCmdTool === true || p.isCmdTool === "true";
 
-                    document.getElementById("and-isCmdTool").checked = (platform[index].isCmdTool == "true");
-                    document.getElementById("and-isZipped").checked = (platform[index].isZipped == "true");
-                    document.getElementById("and-isInstaller").checked = (platform[index].isInstaller == "true");
-                    document.getElementById("and-installProcess").value = platform[index].installProcess;
-                }
-                else if (platform[index].platformid == 2)
-                {
-                    document.getElementById("lin").style.background = "transparent";
-                    document.getElementById("linux").checked = true;
-                    document.getElementById("lin-version").value = platform[index].version;
-                    document.getElementById("lin-download_url").value = platform[index].url;
-                    document.getElementById("lin-requirements").value = platform[index].install_requires.join(",");
-                    document.getElementById("lin-startUpFile").value = platform[index].startUpFile;
-
-                    document.getElementById("lin-isCmdTool").checked = (platform[index].isCmdTool == "true");
-                    document.getElementById("lin-isZipped").checked = (platform[index].isZipped == "true");
-                    document.getElementById("lin-isInstaller").checked = (platform[index].isInstaller == "true");
-                    document.getElementById("lin-installProcess").value = platform[index].installProcess;
-                }
+                    if (plat === "windows") {
+                        document.getElementById("win").style.background = "transparent";
+                        document.getElementById("windows").checked = true;
+                        document.getElementById("win-version").value = p.version || "";
+                        document.getElementById("win-download_url").value = p.url || "";
+                        document.getElementById("win-dependencies").value = Array.isArray(deps) ? deps.join(", ") : deps;
+                        document.getElementById("win-startUpFile").value = p.startUpFile || "";
+                        document.getElementById("win-isCmdTool").checked = isCmd;
+                        document.getElementById("win-artifactType").value = p.artifactType || "binary";
+                        document.getElementById("win-checksum").value = p.checksum || "";
+                        document.getElementById("win-installScope").value = p.installScope || "user";
+                    } else if (plat === "android") {
+                        document.getElementById("and").style.background = "transparent";
+                        document.getElementById("android").checked = true;
+                        document.getElementById("and-version").value = p.version || "";
+                        document.getElementById("and-download_url").value = p.url || "";
+                        document.getElementById("and-dependencies").value = Array.isArray(deps) ? deps.join(", ") : deps;
+                        document.getElementById("and-startUpFile").value = p.startUpFile || "";
+                        document.getElementById("and-isCmdTool").checked = isCmd;
+                        document.getElementById("and-artifactType").value = p.artifactType || "apk";
+                        document.getElementById("and-checksum").value = p.checksum || "";
+                        document.getElementById("and-installScope").value = p.installScope || "user";
+                    } else if (plat === "linux") {
+                        document.getElementById("lin").style.background = "transparent";
+                        document.getElementById("linux").checked = true;
+                        document.getElementById("lin-version").value = p.version || "";
+                        document.getElementById("lin-download_url").value = p.url || "";
+                        document.getElementById("lin-dependencies").value = Array.isArray(deps) ? deps.join(", ") : deps;
+                        document.getElementById("lin-startUpFile").value = p.startUpFile || "";
+                        document.getElementById("lin-isCmdTool").checked = isCmd;
+                        document.getElementById("lin-artifactType").value = p.artifactType || "binary";
+                        document.getElementById("lin-checksum").value = p.checksum || "";
+                        document.getElementById("lin-installScope").value = p.installScope || "user";
+                    }
+                });
             }
         }
     </script>
 </body>
-
 </html>
-
-
-
-
