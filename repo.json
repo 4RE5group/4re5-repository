@@ -31,12 +31,19 @@
         "artifactType": "deb",
         "checksum": "sha256:7515e0d187d1b95553ba431663edb57a66f4600b6636fd10e8f97c7bb08a0f9f",
         "installScope": "system",
-        "dependencies": ["openssl", "jansson"],
+        "dependencies": [
+          "openssl",
+          "jansson"
+        ],
         "isCmdTool": true,
         "startUpFile": "4re5-manager"
       }
     ],
-    "keywords": ["4re5-manager", "app-store", "official"]
+    "keywords": [
+      "4re5-manager",
+      "app-store",
+      "official"
+    ]
   },
   {
     "disabled": false,
@@ -59,12 +66,20 @@
         "artifactType": "binary",
         "checksum": "sha256:REPLACE_ME",
         "installScope": "user",
-        "dependencies": ["libjsoncpp", "libcurl"],
+        "dependencies": [
+          "libjsoncpp",
+          "libcurl"
+        ],
         "isCmdTool": true,
         "startUpFile": "none"
       }
     ],
-    "keywords": ["remote-administration", "server-management", "console", "monitoring"]
+    "keywords": [
+      "remote-administration",
+      "server-management",
+      "console",
+      "monitoring"
+    ]
   },
   {
     "disabled": false,
@@ -87,12 +102,22 @@
         "artifactType": "binary",
         "checksum": "sha256:REPLACE_ME",
         "installScope": "user",
-        "dependencies": ["python3", "csv", "subprocess", "time"],
+        "dependencies": [
+          "python3",
+          "csv",
+          "subprocess",
+          "time"
+        ],
         "isCmdTool": true,
         "startUpFile": "capture.py"
       }
     ],
-    "keywords": ["automatisation", "wifi", "pentesting", "handshake"]
+    "keywords": [
+      "automatisation",
+      "wifi",
+      "pentesting",
+      "handshake"
+    ]
   },
   {
     "disabled": false,
@@ -115,7 +140,9 @@
         "artifactType": "binary",
         "checksum": "sha256:REPLACE_ME",
         "installScope": "user",
-        "dependencies": ["java"],
+        "dependencies": [
+          "java"
+        ],
         "isCmdTool": true,
         "startUpFile": "plugin_manager.py"
       }
@@ -143,7 +170,9 @@
         "artifactType": "exe",
         "checksum": "sha256:REPLACE_ME",
         "installScope": "user",
-        "dependencies": ["Dotnet"],
+        "dependencies": [
+          "Dotnet"
+        ],
         "isCmdTool": true,
         "startUpFile": "ds"
       },
@@ -165,12 +194,19 @@
         "artifactType": "deb",
         "checksum": "sha256:REPLACE_ME",
         "installScope": "user",
-        "dependencies": ["python3"],
+        "dependencies": [
+          "python3"
+        ],
         "isCmdTool": true,
         "startUpFile": "ds"
       }
     ],
-    "keywords": ["Hacking", "Administration tool", "Malware", "RAT"]
+    "keywords": [
+      "Hacking",
+      "Administration tool",
+      "Malware",
+      "RAT"
+    ]
   },
   {
     "disabled": false,
@@ -193,12 +229,18 @@
         "artifactType": "exe",
         "checksum": "sha256:REPLACE_ME",
         "installScope": "user",
-        "dependencies": ["TI-CONNECT-CE"],
+        "dependencies": [
+          "TI-CONNECT-CE"
+        ],
         "isCmdTool": true,
         "startUpFile": "imgTI.exe"
       }
     ],
-    "keywords": ["TI-83", "Tool", "Calculator"]
+    "keywords": [
+      "TI-83",
+      "Tool",
+      "Calculator"
+    ]
   },
   {
     "disabled": false,
@@ -221,12 +263,18 @@
         "artifactType": "exe",
         "checksum": "sha256:REPLACE_ME",
         "installScope": "user",
-        "dependencies": [".NET"],
+        "dependencies": [
+          ".NET"
+        ],
         "isCmdTool": true,
         "startUpFile": "4re5-obfuscator.exe"
       }
     ],
-    "keywords": ["Tool", "C#", "Obfuscator"]
+    "keywords": [
+      "Tool",
+      "C#",
+      "Obfuscator"
+    ]
   },
   {
     "disabled": false,
@@ -249,12 +297,19 @@
         "artifactType": "binary",
         "checksum": "sha256:REPLACE_ME",
         "installScope": "user",
-        "dependencies": ["libssl-dev"],
+        "dependencies": [
+          "libssl-dev"
+        ],
         "isCmdTool": true,
         "startUpFile": "shadow_client"
       }
     ],
-    "keywords": ["Tool", "C++", "Protection", "Anti-virus"]
+    "keywords": [
+      "Tool",
+      "C++",
+      "Protection",
+      "Anti-virus"
+    ]
   },
   {
     "disabled": true,
