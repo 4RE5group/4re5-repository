@@ -15,10 +15,10 @@
     "platform": [
       {
         "platform": "android",
-        "version": "1.8 beta",
-        "url": "https://github.com/4RE5group/4re5-manager/releases/latest/download/release.apk",
+        "version": "1.9 beta",
+        "url": "https://github.com/4RE5group/4re5-manager/releases/latest/download/release_android.apk",
         "artifactType": "apk",
-        "checksum": "sha256:125e8f01dfb0e5beca83a1f2128125e0e5b8680e647055fac96b2e3d6f205876",
+        "checksum": "sha256:83459aad2b2eee89b8f672a570c530fe0fa5c2845211eeec9c43f55d972409b8",
         "installScope": "user",
         "dependencies": [],
         "isCmdTool": false,
@@ -26,10 +26,10 @@
       },
       {
         "platform": "linux",
-        "version": "1.8 beta",
-        "url": "https://github.com/4RE5group/4re5-manager/releases/latest/download/release.deb",
+        "version": "1.9 beta",
+        "url": "https://github.com/4RE5group/4re5-manager/releases/latest/download/release_linux.deb",
         "artifactType": "deb",
-        "checksum": "sha256:7515e0d187d1b95553ba431663edb57a66f4600b6636fd10e8f97c7bb08a0f9f",
+        "checksum": "sha256:8b9117cf7668b501507874d9b281b43d3c5e3c0168e6261c06b865438451cb35",
         "installScope": "system",
         "dependencies": [
           "openssl",
@@ -37,6 +37,19 @@
         ],
         "isCmdTool": true,
         "startUpFile": "4re5-manager"
+      },
+      {
+        "platform": "windows",
+        "version": "1.9 beta",
+        "url": "https://github.com/4RE5group/4re5-manager/releases/latest/download/release_windows_x86_64.exe",
+        "artifactType": "exe",
+        "checksum": "sha256:95fb2ecbde152eac4b1e71dbcbb703f9f644da57130bffbdc5364952e3e71b57",
+        "installScope": "system",
+        "dependencies": [
+          "Dotnet"
+        ],
+        "isCmdTool": false,
+        "startUpFile": "release_windows_x86_64.exe"
       }
     ],
     "keywords": [
